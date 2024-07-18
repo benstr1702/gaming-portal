@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/common/header/Header";
 import SignUp from "./pages/sign_up/SignUp";
+import SignIn from "./pages/sign_in/SignIn";
 import UserContextProvider from "./contexts/UserContextProvider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //TBD
@@ -35,8 +36,7 @@ function App() {
 						}
 					/>
 					<Route path="/signup" element={<SignUp />} />
-					{/* <Route path="/signin" element={<SignIn />} /> */}
-					{/* Add more routes as needed */}
+					<Route path="/signin" element={<SignIn />}></Route>
 				</Routes>
 			</Router>
 		</UserContextProvider>
