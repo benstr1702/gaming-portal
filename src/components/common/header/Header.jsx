@@ -56,9 +56,9 @@ const Header = () => {
 						<li className="mb-6 hidden max-lg:block">
 							<a href="#">
 								<img
-									src="https://readymadeui.com/readymadeui.svg"
+									src="/logo.svg"
 									alt="logo"
-									className="w-36"
+									className="w-16"
 								/>
 							</a>
 						</li>

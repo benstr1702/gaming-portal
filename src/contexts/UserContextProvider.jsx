@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import userContext from "./userContext";
+import UserContext from "./userContext";
 
 const UserContextProvider = ({ children }) => {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -32,11 +32,11 @@ const UserContextProvider = ({ children }) => {
 	}
 
 	return (
-		<userContext.Provider
+		<UserContext.Provider
 			value={{ users, setUsers, addUser, authUser, authenticated }}
 		>
 			{children}
-		</userContext.Provider>
+		</UserContext.Provider>
 	);
 };
 

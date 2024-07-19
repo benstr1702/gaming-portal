@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import userContext from "../../contexts/userContext";
+import UserContext from "../../contexts/userContext";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function SignIn() {
 	const [formData, setFormData] = useState([]);
-	const { users } = useContext(userContext);
+	const { users } = useContext(UserContext);
 
 	function handleChange() {
 		console.log("change");
