@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../contexts/userContext";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
-import { validateSignUpForm } from "../../functions/signUp.auth.fun";
+import { validateSignUpForm } from "../../utils/signUp.auth.fun";
 import { v4 as uuidv4 } from "uuid";
 
 export default function SignUp() {

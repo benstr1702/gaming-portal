@@ -3,8 +3,7 @@ import UserContext from "../../contexts/userContext";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
-import { validateSignInForm } from "../../functions/signIn.auth.fun";
-
+import { validateSignInForm } from "../../utils/signIn.auth.fun";
 export default function SignIn() {
 	const [formData, setFormData] = useState({
 		usernameOrEmail: "",

@@ -1,19 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import UserContext from "../contexts/userContext";
+import React from "react";
+import UserContext from "../../contexts/userContext";
+import { useContext, useState } from "react";
+export default function HomePage() {
+	const { users } = useContext(UserContext);
 
-function Home() {
-	const { loggedIn } = useContext(UserContext);
-	const navigate = useNavigate();
-
-	const handleStartPlaying = () => {
-		if (!loggedIn) {
-			navigate("/signin");
-		} else {
-			// Navigate to game page or start game logic
-		}
+	const handleClick = () => {
+		console.log(users);
 	};
-
 	return (
 		<div className="relative bg-cover bg-center h-screen bg-hero-image">
 			<div className="absolute inset-0 bg-black opacity-50"></div>
@@ -26,7 +19,7 @@ function Home() {
 				</p>
 				<button
 					className="px-6 py-3 text-lg font-semibold text-white bg-customPurple rounded-full hover:bg-customPurple transition duration-300"
-					onClick={handleStartPlaying}
+					onClick={handleClick}
 				>
 					Start Playing
 				</button>
@@ -34,5 +27,3 @@ function Home() {
 		</div>
 	);
 }
-
-export default Home;
