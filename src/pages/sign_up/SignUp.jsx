@@ -4,6 +4,7 @@ import UserContext from "../../contexts/userContext";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { validateSignUpForm } from "../../functions/signUp.auth.fun";
+import { v4 as uuidv4 } from "uuid";
 
 export default function SignUp() {
 	const navigate = useNavigate();
@@ -13,6 +14,8 @@ export default function SignUp() {
 		email: "",
 		username: "",
 		password: "",
+		role: "player",
+		uuid: "",
 	});
 	const [errors, setErrors] = useState({});
 	const [validated, setValidated] = useState(false);
@@ -30,11 +33,13 @@ export default function SignUp() {
 				username: formData.username.trim(),
 				email: formData.email.trim(),
 				password: formData.password,
+				role: "player",
+				uuid: uuidv4(),
 			};
 			addUser(newUser);
 			setTimeout(() => {
 				navigate("/signin");
-			}, 1500);
+			}, 1000);
 			console.warn("SignUp Success");
 		}
 		setFormData({

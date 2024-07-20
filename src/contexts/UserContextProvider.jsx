@@ -7,7 +7,7 @@ const UserContextProvider = ({ children }) => {
 		return storedUsers ? JSON.parse(storedUsers) : [];
 	});
 	const [loggedIn, setLoggedIn] = useState(() => {
-		const user = localStorage.getItem("loggedIn");
+		const user = sessionStorage.getItem("loggedIn");
 		return user ? JSON.parse(user) : {};
 	});
 
@@ -16,7 +16,7 @@ const UserContextProvider = ({ children }) => {
 	}, [users]);
 
 	useEffect(() => {
-		localStorage.setItem("loggedIn", JSON.stringify(loggedIn));
+		sessionStorage.setItem("loggedIn", JSON.stringify(loggedIn));
 	}, [loggedIn]);
 	function addUser(user) {
 		setUsers((prev) => [...prev, user]); // Corrected to add the new user to the previous array

@@ -41,7 +41,7 @@ export const validateSignUpForm = (formData, setErrors, users) => {
 			"Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
 		isValid = false;
 	}
-	console.error(Object.keys(newErrors) ? newErrors : "No Errors");
+	console.error(newErrors);
 	setErrors(newErrors);
 	return isValid;
 };

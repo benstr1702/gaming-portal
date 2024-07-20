@@ -10,7 +10,7 @@ export default function SignIn() {
 		usernameOrEmail: "",
 		password: "",
 	});
-	const { users, loggedIn, setLoggedIn } = useContext(UserContext);
+	const { users, setLoggedIn } = useContext(UserContext);
 	const [newSignInErrors, setNewSignInErrors] = useState({});
 	const [successMessage, setSuccessMessage] = useState("");
 	const navigate = useNavigate();
@@ -42,10 +42,9 @@ export default function SignIn() {
 			setLoggedIn(returnedUser);
 			setSuccessMessage("Login Successful! Redirecting...");
 
-			// Set a timeout to navigate after showing the success message
 			setTimeout(() => {
 				navigate("/");
-			}, 1500);
+			}, 600);
 		} else {
 			console.log("Login Failed");
 		}
