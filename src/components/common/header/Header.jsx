@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import UserContext from "../../../contexts/userContext";
 
 const Header = () => {
 	const navigate = useNavigate();
 	const [menuOpen, setMenuOpen] = useState(false);
 
+	const { loggedIn, setLoggedIn } = useContext(UserContext);
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
 	};
@@ -18,13 +20,20 @@ const Header = () => {
 		console.log("signin");
 	};
 
+	const handleSignOut = () => {
+		setLoggedIn({});
+		setTimeout(() => {
+			navigate("/");
+		}, 1000);
+	};
+
 	return (
 		<header className="flex shadow-md py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide relative z-50">
-			<div className="flex flex-wrap items-center justify-between gap-5 w-full">
+			<div className="flex flex-wrap items-center justify-between w-full gap-4">
+				{" "}
 				<Link to="/">
 					<img src="/logo.svg" alt="logo" className="w-20" />
 				</Link>
-
 				<div
 					id="collapseMenu"
 					className={`${
@@ -89,20 +98,37 @@ const Header = () => {
 						)}
 					</ul>
 				</div>
-
-				<div className="flex max-lg:ml-auto space-x-3">
-					<button
-						className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[rgb(149,142,247)] bg-[rgb(149,142,247)] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[rgb(149,142,247)]"
-						onClick={handleSignIn}
-					>
-						Sign In
-					</button>
-					<button
-						className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[rgb(149,142,247)] bg-[rgb(149,142,247)] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[rgb(149,142,247)]"
-						onClick={handleSignUp}
-					>
-						Sign up
-					</button>
+				<div className="flex gap-3">
+					{" "}
+					{Object.keys(loggedIn).length === 0 && (
+						<>
+							<button
+								className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[rgb(149,142,247)] bg-[rgb(149,142,247)] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[rgb(149,142,247)]"
+								onClick={handleSignIn}
+							>
+								Sign In
+							</button>
+							<button
+								className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[rgb(149,142,247)] bg-[rgb(149,142,247)] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[rgb(149,142,247)]"
+								onClick={handleSignUp}
+							>
+								Sign Up
+							</button>
+						</>
+					)}
+					{Object.keys(loggedIn).length > 0 && (
+						<>
+							<div className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[rgb(149,142,247)] bg-[rgb(149,142,247)] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[rgb(149,142,247)]">
+								Signed in as {loggedIn.username}
+							</div>
+							<button
+								className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[rgb(149,142,247)] bg-[rgb(149,142,247)] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[rgb(149,142,247)]"
+								onClick={handleSignOut}
+							>
+								Sign Out
+							</button>
+						</>
+					)}
 					<button
 						id="toggleOpen"
 						onClick={toggleMenu}
