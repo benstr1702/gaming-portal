@@ -6,6 +6,9 @@ export default {
 			colors: {
 				customPurple: "rgb(149, 142, 247)",
 			},
+			fonts: {
+				nunito: ["Nunito Sans", "sans-serif"],
+			},
 		},
 	},
 	plugins: [],

@@ -7,6 +7,9 @@ import { validateSignUpForm } from "../../utils/signUp.auth.fun";
 import { v4 as uuidv4 } from "uuid";
 
 export default function SignUp() {
+	useEffect(() => {
+		document.title = "Game Portal | Sign Up";
+	}, []);
 	const navigate = useNavigate();
 	const { addUser, users } = useContext(UserContext);
 

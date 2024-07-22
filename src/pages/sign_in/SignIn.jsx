@@ -5,6 +5,9 @@ import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
 import { validateSignInForm } from "../../utils/signIn.auth.fun";
 export default function SignIn() {
+	useEffect(() => {
+		document.title = "Game Portal | Sign In";
+	}, []);
 	const [formData, setFormData] = useState({
 		usernameOrEmail: "",
 		password: "",

@@ -1,9 +1,11 @@
 import React from "react";
 import UserContext from "../../contexts/userContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 export default function HomePage() {
 	const { users } = useContext(UserContext);
-
+	useEffect(() => {
+		document.title = "Game Portal | Home";
+	}, []);
 	const handleClick = () => {
 		console.log(users);
 	};

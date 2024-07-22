@@ -7,6 +7,11 @@ const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const { loggedIn, setLoggedIn } = useContext(UserContext);
+	const menuItems = ["Home", "About", "Contact", "Games"];
+	if (Object.keys(loggedIn).length > 0) {
+		menuItems.push("Profile");
+	}
+
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
 	};
@@ -71,31 +76,29 @@ const Header = () => {
 								/>
 							</a>
 						</li>
-						{["Home", "About", "Contact", "Games"].map(
-							(item, index) => (
-								<li
-									key={index}
-									className="max-lg:border-b border-gray-300 max-lg:py-3 px-3"
+						{menuItems.map((item, index) => (
+							<li
+								key={index}
+								className="max-lg:border-b border-gray-300 max-lg:py-3 px-3"
+							>
+								<Link
+									to={
+										item === "Home"
+											? "/"
+											: item === "About"
+											? "/about"
+											: item === "Contact"
+											? "/contact"
+											: item === "Games"
+											? "/games"
+											: "/profile"
+									}
+									className="hover:text-[rgb(149,142,247)] text-gray-500 block font-semibold text-[15px]"
 								>
-									<Link
-										to={
-											item === "Home"
-												? "/"
-												: item === "About"
-												? "/about"
-												: item === "Contact"
-												? "/contact"
-												: item === "Games"
-												? "/games"
-												: "/"
-										}
-										className="hover:text-[rgb(149,142,247)] text-gray-500 block font-semibold text-[15px]"
-									>
-										{item}
-									</Link>
-								</li>
-							)
-						)}
+									{item}
+								</Link>
+							</li>
+						))}
 					</ul>
 				</div>
 				<div className="flex gap-3">
