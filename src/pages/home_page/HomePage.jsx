@@ -1,13 +1,15 @@
 import React from "react";
 import UserContext from "../../contexts/userContext";
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function HomePage() {
 	const { users } = useContext(UserContext);
+	const nav = useNavigate();
 	useEffect(() => {
 		document.title = "Game Portal | Home";
 	}, []);
 	const handleClick = () => {
-		console.log(users);
+		nav("/games");
 	};
 	return (
 		<div className="relative bg-cover bg-center h-screen bg-hero-image">
