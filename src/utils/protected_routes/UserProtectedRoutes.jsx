@@ -11,5 +11,5 @@ export default function UserProtectedRoutes() {
 		? users.find((user) => user.uuid === loggedIn.uuid)
 		: null;
 
-	return currentUser ? <Outlet /> : <Navigate to="/profile/" />;
+	return currentUser ? <Outlet /> : <Navigate to="/signin/" />;
 }

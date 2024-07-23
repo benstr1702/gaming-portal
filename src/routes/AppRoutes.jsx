@@ -9,6 +9,7 @@ import UserProtectedRoutes from "../utils/protected_routes/UserProtectedRoutes";
 import NotFound from "../pages/error404/NotFound";
 import GameCatalog from "../pages/game_catalog/GameCatalog";
 import TicTacToe from "../games/tictactoe/TicTacToe";
+import RockPaperScissors from "../games/rock-paper-scissors/RockPaperScissors";
 
 function AppRoutes() {
 	return (
@@ -22,9 +23,10 @@ function AppRoutes() {
 			</Route>
 			<Route element={<UserProtectedRoutes />}>
 				<Route path="/profile/" element={<UserProfile />} />
+				<Route path="/games/ttt" element={<TicTacToe />} />
 			</Route>
 			<Route path="/games" element={<GameCatalog />} />
-			<Route path="/games/ttt" element={<TicTacToe />} />
+			<Route path="/games/rps" element={<RockPaperScissors />} />
 		</Routes>
 	);
 }

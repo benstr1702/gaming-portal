@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 
 export default function UserProfile() {
 	useEffect(() => {
-		document.title = "Game Portal | Profile";
+		document.title = "Game Portal | Profile	";
 	}, []);
 	const { loggedIn } = useContext(UserContext);
 	return (
