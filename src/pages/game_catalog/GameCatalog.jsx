@@ -76,7 +76,7 @@ function GameCatalog() {
 						<h3 className="text-xl font-medium mb-2">
 							Rock Paper Scissors
 						</h3>
-						<Link to="rock-paper-scissors">
+						<Link to="/games/rps">
 							<img
 								src="/rockpaperscissors.jpg"
 								alt="rock paper scissors image"
