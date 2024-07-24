@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../contexts/userContext";
-import { validateSignUpForm } from "../../utils/signUp.auth.fun";
+import { validateEditProfileForm } from "../../utils/editUser.auth.fun";
+import { validate } from "uuid";
 
 export default function UserProfile() {
 	useEffect(() => {
@@ -23,7 +24,7 @@ export default function UserProfile() {
 			[field]: editValue,
 		};
 
-		if (!validateSignUpForm(formData, setErrors, users, loggedIn)) {
+		if (!validateEditProfileForm(formData, setErrors, users, loggedIn)) {
 			return;
 		}
 

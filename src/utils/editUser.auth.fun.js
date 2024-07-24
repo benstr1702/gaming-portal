@@ -6,7 +6,12 @@
  * @param {object} currentUser - Data of the currently logged-in user
  * @returns {boolean} - Returns true if form is valid, otherwise false
  */
-export const validateSignUpForm = (formData, setErrors, users) => {
+export const validateEditProfileForm = (
+	formData,
+	setErrors,
+	users,
+	currentUser
+) => {
 	let isValid = true;
 	let newErrors = {};
 
@@ -14,7 +19,10 @@ export const validateSignUpForm = (formData, setErrors, users) => {
 	if (formData.username.trim().length < 3) {
 		newErrors.username = "Username must be at least 3 characters long.";
 		isValid = false;
-	} else if (users.some((user) => user.username === formData.username)) {
+	} else if (
+		formData.username !== currentUser.username &&
+		users.some((user) => user.username === formData.username)
+	) {
 		newErrors.username = "This username is already taken.";
 		isValid = false;
 	}
@@ -24,16 +32,20 @@ export const validateSignUpForm = (formData, setErrors, users) => {
 	if (!emailRegex.test(formData.email)) {
 		newErrors.email = "Enter a valid Email address.";
 		isValid = false;
-	} else if (users.some((user) => user.email === formData.email)) {
+	} else if (
+		formData.email !== currentUser.email &&
+		users.some((user) => user.email === formData.email)
+	) {
 		newErrors.email = "There's already an account with this Email address.";
 		isValid = false;
 	}
 
-	// Password Validation (regex)
-	if (formData.password.length < 8) {
+	// Password Validation (regex, optional)
+	if (formData.password && formData.password.length < 8) {
 		newErrors.password = "Password must be at least 8 characters long.";
 		isValid = false;
 	} else if (
+		formData.password &&
 		!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
 			formData.password
 		)

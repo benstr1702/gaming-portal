@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Rock from "./components/Rock";
 import Scissors from "./components/Scissors";
 import Paper from "./components/Paper";
 
 function RockPaperScissors() {
+	useEffect(() => {
+		document.title = "Game Portal | Rock Paper Scissors";
+	}, []);
+
 	const [options] = useState(["rock", "paper", "scissors"]);
 	const [userChoice, setUserChoice] = useState(null);
 	const [computerChoice, setComputerChoice] = useState(null);

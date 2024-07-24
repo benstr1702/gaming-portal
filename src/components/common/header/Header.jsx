@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import UserContext from "../../../contexts/userContext";
 
 const Header = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const { loggedIn, setLoggedIn } = useContext(UserContext);
-	const menuItems = ["Home", "About", "Contact", "Games"];
+	const menuItems = ["Home", "About", "Games"];
 	if (Object.keys(loggedIn).length > 0) {
 		menuItems.push("Profile");
 	}
@@ -35,7 +36,6 @@ const Header = () => {
 	return (
 		<header className="flex shadow-md py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide relative z-50">
 			<div className="flex flex-wrap items-center justify-between w-full gap-4">
-				{" "}
 				<Link to="/">
 					<img src="/logo.svg" alt="logo" className="w-20" />
 				</Link>
@@ -76,33 +76,36 @@ const Header = () => {
 								/>
 							</a>
 						</li>
-						{menuItems.map((item, index) => (
-							<li
-								key={index}
-								className="max-lg:border-b border-gray-300 max-lg:py-3 px-3"
-							>
-								<Link
-									to={
-										item === "Home"
-											? "/"
-											: item === "About"
-											? "/about"
-											: item === "Contact"
-											? "/contact"
-											: item === "Games"
-											? "/games"
-											: "/profile"
-									}
-									className="hover:text-[rgb(149,142,247)] text-gray-500 block font-semibold text-[15px]"
+						{menuItems.map((item, index) => {
+							const path =
+								item === "Home"
+									? "/"
+									: item === "About"
+									? "/about"
+									: item === "Games"
+									? "/games"
+									: "/profile";
+							return (
+								<li
+									key={index}
+									className="max-lg:border-b border-gray-300 max-lg:py-3 px-3"
 								>
-									{item}
-								</Link>
-							</li>
-						))}
+									<Link
+										to={path}
+										className={`hover:text-[rgb(149,142,247)] text-gray-500 block font-semibold text-[15px] ${
+											location.pathname === path
+												? "underline"
+												: ""
+										}`}
+									>
+										{item}
+									</Link>
+								</li>
+							);
+						})}
 					</ul>
 				</div>
 				<div className="flex gap-3">
-					{" "}
 					{Object.keys(loggedIn).length === 0 && (
 						<>
 							<button

@@ -10,12 +10,13 @@ import NotFound from "../pages/error404/NotFound";
 import GameCatalog from "../pages/game_catalog/GameCatalog";
 import TicTacToe from "../games/tictactoe/TicTacToe";
 import RockPaperScissors from "../games/rock-paper-scissors/RockPaperScissors";
-
+import About from "../pages/about/About";
 function AppRoutes() {
 	return (
 		<Routes>
 			<Route path="*" element={<NotFound />} />
 			<Route path="/" element={<HomePage />} />
+			<Route path="/about" element={<About />} />
 			<Route path="/signup" element={<SignUp />} />
 			<Route path="/signin" element={<SignIn />} />
 			<Route element={<ProtectedRoutes />}>
