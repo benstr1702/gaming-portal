@@ -34,12 +34,12 @@ function GameCatalog() {
 					</div>
 					<div className="text-center">
 						<h3 className="text-xl font-medium mb-2">
-							Minesweeper
+							Binary Guesser
 						</h3>
-						<Link to="minesweeper">
+						<Link to="binary_guesser">
 							<img
-								src="/minesweeper.png"
-								alt="minesweeper image"
+								src="/binary_guesser.png"
+								alt="breakout game  image"
 								className="rounded object-cover h-60 shadow-xl transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
 								width={400}
 								height={400}
@@ -103,12 +103,12 @@ function GameCatalog() {
 					</div>
 					<div className="text-center">
 						<h3 className="text-xl font-medium mb-2">
-							Minesweeper
+							Binary Guesser
 						</h3>
 						<div className="relative group cursor-not-allowed">
 							<img
-								src="/minesweeper.png"
-								alt="minesweeper image"
+								src="/binary_guesser.png"
+								alt="breakout game  image"
 								className="rounded object-cover h-60 grayscale"
 								width={400}
 								height={400}

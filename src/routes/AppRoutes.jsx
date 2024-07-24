@@ -11,6 +11,7 @@ import GameCatalog from "../pages/game_catalog/GameCatalog";
 import TicTacToe from "../games/tictactoe/TicTacToe";
 import RockPaperScissors from "../games/rock-paper-scissors/RockPaperScissors";
 import About from "../pages/about/About";
+import BinaryGuesser from "../games/binary_guesser/BinaryGuesser";
 function AppRoutes() {
 	return (
 		<Routes>
@@ -23,6 +24,10 @@ function AppRoutes() {
 				<Route path="/admin-view" element={<AdminDashBoard />} />
 			</Route>
 			<Route element={<UserProtectedRoutes />}>
+				<Route
+					path="games/binary_guesser"
+					element={<BinaryGuesser />}
+				/>
 				<Route path="/profile/" element={<UserProfile />} />
 				<Route path="/games/ttt" element={<TicTacToe />} />
 			</Route>
