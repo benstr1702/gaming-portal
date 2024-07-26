@@ -70,7 +70,10 @@ const UserContextProvider = ({ children }) => {
 	function addUser(user) {
 		setUsers((prev) => [...prev, user]);
 	}
-
+	function deleteUser(uuid) {
+		const newUsers = users.filter((u) => u.uuid !== uuid);
+		setUsers(newUsers);
+	}
 	function updateUser(userUUID, updates) {
 		setUsers((prevUsers) =>
 			prevUsers.map((user) =>
@@ -96,6 +99,7 @@ const UserContextProvider = ({ children }) => {
 				loggedIn,
 				setLoggedIn,
 				updateUser,
+				deleteUser,
 			}}
 		>
 			{children}
